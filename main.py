@@ -28,3 +28,12 @@ assert szescian(2) == (24, 8)
 assert szescian(3) == (54, 27)
 
 
+def ostroslup_prawidlowy_czwrokatny(bok_podstawy,wysokosc):
+    objetosc=1/3*(bok_podstawy*bok_podstawy*wysokosc)
+    return objetosc
+
+assert ostroslup_prawidlowy_czwrokatny(1, 1) == (1/3)
+assert ostroslup_prawidlowy_czwrokatny(2, 1) == (4/3)
+assert ostroslup_prawidlowy_czwrokatny(2, 2) == (8/3)
+
+
