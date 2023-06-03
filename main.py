@@ -12,3 +12,6 @@ def oblicz_objetosc_kuli(promien):
 #objetosc = oblicz_objetosc_kuli(promien)
 #print(f"Objętość kuli o promieniu {promien} wynosi: {objetosc}")
 
+
+assert oblicz_objetosc_kuli(3) == 113.1
+assert oblicz_objetosc_kuli(5) == 523.6
