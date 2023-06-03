@@ -1,10 +1,10 @@
 import math
 
-def oblicz_objetosc_kuli(promien):
-    if promien < 0:
-        return "Promień nie może być mniejszy od zera!"
+def oblicz_objetosc_stozka(promien, wysokosc):
+    if promien < 0 or wysokosc < 0:
+        return "Promień i wysokosc nie może być mniejszy od zera!"
 
-    objetosc = round((4/3) * math.pi * (promien ** 3),2)
+    objetosc = round( (1/3) * math.pi * (promien ** 2) * wysokosc, 2)
     return objetosc
 
 # Przykładowe użycie
@@ -13,8 +13,8 @@ def oblicz_objetosc_kuli(promien):
 #print(f"Objętość kuli o promieniu {promien} wynosi: {objetosc}")
 
 
-assert oblicz_objetosc_kuli(3) == 113.1
-assert oblicz_objetosc_kuli(5) == 523.6
+# assert oblicz_objetosc_kuli(3) == 113.1
+# assert oblicz_objetosc_kuli(5) == 523.6
 
 
 def szescian(bok):
