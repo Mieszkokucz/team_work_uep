@@ -13,8 +13,9 @@ def oblicz_objetosc_stozka(promien, wysokosc):
 #print(f"Objętość kuli o promieniu {promien} wynosi: {objetosc}")
 
 
-# assert oblicz_objetosc_kuli(3) == 113.1
-# assert oblicz_objetosc_kuli(5) == 523.6
+oblicz_objetosc_stozka(3,5)
+assert oblicz_objetosc_stozka(3,5) == 47.12
+assert oblicz_objetosc_stozka(5,7) == 183.26
 
 
 def szescian(bok):
