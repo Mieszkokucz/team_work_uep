@@ -13,3 +13,12 @@ class Pracownik:
         wyplata_netto = round(self.wyplata_brutto - skladki_pracownik - skladka_zdrowotna - zaliczka_podatek, 2)
         return wyplata_netto
 
+
+Pracownik1 = Pracownik("Popiol", 3500)
+#Test funkcji oblicz_netto()
+assert Pracownik1.oblicz_netto() == 2715.94, "Niepoprawna wypata"
+#Test funkcji __str__()
+assert str(Pracownik1) == "Popiol 3500", "Nieoczekiwany string"
+
+#poppozycja poprawki funkcji str:
+# return f"{self.nazwisko } {self.wyplata_brutto}"
