@@ -12,6 +12,11 @@ class Pracownik:
         zaliczka_podatek = 0.12*(int(self.wyplata_brutto - skladki_pracownik-250)) - 300
         wyplata_netto = round(self.wyplata_brutto - skladki_pracownik - skladka_zdrowotna - zaliczka_podatek, 2)
         return wyplata_netto
+    
+    def oblicz_koszty_pracodawcy(self):
+        skladki_pracodawca = 0.0976*self.wyplata_brutto + 0.065*self.wyplata_brutto + 0.0167*self.wyplata_brutto + 0.0245*self.wyplata_brutto + 0.001*self.wyplata_brutto
+        koszt_pracowdawcy = round(self.wyplata_brutto + skladki_pracodawca, 2)
+        return koszt_pracowdawcy
 
 
 Pracownik1 = Pracownik("Popiol", 3500)
@@ -23,7 +28,5 @@ Pracownik1 = Pracownik("Popiol", 3500)
 #poppozycja poprawki funkcji str:
 # return f"{self.nazwisko } {self.wyplata_brutto}"
 
-def oblicz_koszty_pracodawcy(self):
-        skladki_pracodawca = 0.0976*self.wyplata_brutto + 0.065*self.wyplata_brutto + 0.0167*self.wyplata_brutto + 0.0245*self.wyplata_brutto + 0.001*self.wyplata_brutto
-        koszt_pracowdawcy = round(self.wyplata_brutto + skladki_pracodawca, 2)
-        return koszt_pracowdawcy
+#Test funkcji oblicz_koszty_pracodawcy()
+assert Pracownik1.oblicz_koszty_pracodawcy() == 4216.8
