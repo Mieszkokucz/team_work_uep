@@ -22,3 +22,8 @@ Pracownik1 = Pracownik("Popiol", 3500)
 
 #poppozycja poprawki funkcji str:
 # return f"{self.nazwisko } {self.wyplata_brutto}"
+
+def oblicz_koszty_pracodawcy(self):
+        skladki_pracodawca = 0.0976*self.wyplata_brutto + 0.065*self.wyplata_brutto + 0.0167*self.wyplata_brutto + 0.0245*self.wyplata_brutto + 0.001*self.wyplata_brutto
+        koszt_pracowdawcy = round(self.wyplata_brutto + skladki_pracodawca, 2)
+        return koszt_pracowdawcy
