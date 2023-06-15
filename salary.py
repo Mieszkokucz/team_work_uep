@@ -51,3 +51,7 @@ assert str(Pracownik1) == "Popiol 3500", "Nieoczekiwany string"
 #Test funkcji oblicz_koszty_pracodawcy()
 assert Pracownik1.oblicz_koszty_pracodawcy() == 4216.8
 
+#Test funkcji wygeneruj_raport()
+Pracownik1.wygeneruj_raport()
+#Błędnie zdefiniowana zmienna skladka_rentowa_pracodawca, zmiana na -> skladka_rentowa_pracodawca = 0.065 * self.wyplata_brutto
+
