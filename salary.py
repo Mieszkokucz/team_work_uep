@@ -13,7 +13,7 @@ class Pracownik:
         self.skladka_chorobowa = round(0.0245 * self.wyplata_brutto, 2)
         self.skladka_zdrowotna = round(0.09 * (self.wyplata_brutto - self.skladka_emeryt - self.skladka_rentowa - self.skladka_chorobowa), 2)
         self.zaliczka_podatek_dochodowy = round(0.12 * round((self.wyplata_brutto - self.skladka_emeryt - self.skladka_rentowa - self.skladka_chorobowa - 250)) - 300, 2)
-        self.wyplata_netto = self.wyplata_brutto - self.skladka_emeryt - self.skladka_rentowa - self.skladka_chorobowa - self.skladka_zdrowotna - self.zaliczka_podatek_dochodowy
+        self.wyplata_netto = round(self.wyplata_brutto - self.skladka_emeryt - self.skladka_rentowa - self.skladka_chorobowa - self.skladka_zdrowotna - self.zaliczka_podatek_dochodowy, 2)
 
         return self.wyplata_netto
 
@@ -33,38 +33,37 @@ class Pracownik:
               )
 
 
+if __name__ == '__main__':
+    Pracownik1 = Pracownik("Popiol", 3500)
+    # Test funkcji oblicz_netto()
+    assert Pracownik1.oblicz_netto() == 2715.94, "Niepoprawna wypata"
+    # Test funkcji __str__()
+    assert str(Pracownik1) == "Popiol 3500", "Nieoczekiwany string"
 
-Pracownik1 = Pracownik("Popiol", 3500)
-#Test funkcji oblicz_netto()
-assert Pracownik1.oblicz_netto() == 2715.94, "Niepoprawna wypata"
-#Test funkcji __str__()
-assert str(Pracownik1) == "Popiol 3500", "Nieoczekiwany string"
+    # Test funkcji oblicz_koszty_pracodawcy()
+    assert Pracownik1.oblicz_koszty_pracodawcy() == 4216.8
 
+    Pracownik1.wygeneruj_raport()
 
-#Test funkcji oblicz_koszty_pracodawcy()
-assert Pracownik1.oblicz_koszty_pracodawcy() == 4216.8
+    # Test funkcji wygeneruj_raport()
+    # te przechwytywanie z neta skopiowialem
+    captured_output = StringIO()
+    sys.stdout = captured_output
 
-Pracownik1.wygeneruj_raport()
+    # Call the method
+    Pracownik1.wygeneruj_raport()
 
-#Test funkcji wygeneruj_raport()
-#te przechwytywanie z neta skopiowialem
-captured_output = StringIO()
-sys.stdout = captured_output
+    # Capture the printed output
+    printed_text = captured_output.getvalue().strip()
 
-# Call the method
-Pracownik1.wygeneruj_raport()
+    expected_output = f"Wynagrodzenie brutto: 3500" + \
+                      f"\n\nSkładki płatne przez pracownika:\nSkładka emerytalna: 341.6" + \
+                      f"\nSkładka rentowa: 52.5" + \
+                      f"\nSkładka chorobowa: 85.75" + \
+                      f"\nSkładka zdrowotna: 271.81" + \
+                      f"\nZaliczka na podatek dochodowy: 32.4" + \
+                      f"\nWynagrodzenie netto: 2715.94"
 
-# Capture the printed output
-printed_text = captured_output.getvalue().strip()
+    assert printed_text == expected_output, f"Expected '{expected_output}', but got '{printed_text}'"
 
-expected_output = f"Wynagrodzenie brutto: 3500" +\
-        f"\n\nSkładki płatne przez pracownika:\nSkładka emerytalna: 341.6" +\
-              f"\nSkładka rentowa: 52.5" +\
-              f"\nSkładka chorobowa: 85.75" +\
-              f"\nSkładka zdrowotna: 271.81" +\
-              f"\nZaliczka na podatek dochodowy: 32.4" +\
-              f"\nWynagrodzenie netto: 2715.94"
-
-assert printed_text == expected_output, f"Expected '{expected_output}', but got '{printed_text}'"
-
-sys.stdout = sys.__stdout__
+    sys.stdout = sys.__stdout__
